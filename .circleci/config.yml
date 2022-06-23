@@ -222,13 +222,14 @@ jobs:
       - checkout
       - install_awscli
       - run:
-          name: Run migrations
+          name: Run npm install
           command: |
             cd backend
             npm install
-            echo ${TYPEORM_MIGRATIONS}
-            echo ${TYPEORM_MIGRATIONS_DIR}
-            echo ${TYPEORM_ENTITIES}
+      - run:
+          name: Run migrations
+          command: |
+            cd backend
             npm run migrations > migrations_dump.txt
       - run:
           name: Send migration results to KVdb
