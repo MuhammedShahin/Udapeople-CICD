@@ -226,15 +226,15 @@ jobs:
           command: |
             cd backend
             npm install
-            ${TYPEORM_CONNECTION} > env.txt
-            ${TYPEORM_MIGRATIONS_DIR} >> env.txt
-            ${TYPEORM_ENTITIES} >> env.txt
-            ${TYPEORM_MIGRATIONS} >> env.txt
-            ${TYPEORM_HOST} >> env.txt
-            ${TYPEORM_PORT} >> env.txt
-            ${TYPEORM_USERNAME} >> env.txt
-            ${TYPEORM_PASSWORD} >> env.txt
-            ${TYPEORM_DATABASE} >> env.txt
+            echo ${TYPEORM_CONNECTION} > env.txt
+            echo ${TYPEORM_MIGRATIONS_DIR} >> env.txt
+            echo ${TYPEORM_ENTITIES} >> env.txt
+            echo ${TYPEORM_MIGRATIONS} >> env.txt
+            echo ${TYPEORM_HOST} >> env.txt
+            echo ${TYPEORM_PORT} >> env.txt
+            echo ${TYPEORM_USERNAME} >> env.txt
+            echo ${TYPEORM_PASSWORD} >> env.txt
+            echo ${TYPEORM_DATABASE} >> env.txt
             cat env.txt
             npm run migrations > migrations_dump.txt
       - run:
