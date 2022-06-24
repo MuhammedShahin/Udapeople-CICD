@@ -226,17 +226,7 @@ jobs:
           command: |
             cd backend
             npm install
-            echo ${TYPEORM_CONNECTION} > env.txt
-            echo ${TYPEORM_MIGRATIONS_DIR} >> env.txt
-            echo ${TYPEORM_ENTITIES} >> env.txt
-            echo ${TYPEORM_MIGRATIONS} >> env.txt
-            echo ${TYPEORM_HOST} >> env.txt
-            echo ${TYPEORM_PORT} >> env.txt
-            echo ${TYPEORM_USERNAME} >> env.txt
-            echo ${TYPEORM_PASSWORD} >> env.txt
-            echo ${TYPEORM_DATABASE} >> env.txt
-            cat env.txt
-            npm run migrations > migrations_dump.txt
+            npm run migrations-win > migrations_dump.txt
       - run:
           name: Send migration results to KVdb
           command: |
