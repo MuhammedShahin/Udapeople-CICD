@@ -1,0 +1,27 @@
+---
+
+- name: "Create backend app directory"
+  file:
+    path: ~/backend-app
+    state: directory
+
+- name: "Unarchive backend build files"
+  unarchive:
+    src: build.tar.gz
+    dest: ~/backend-app
+
+- name: "Install dependencies"
+  shell: |
+    cd ~/backend-app
+    npm i
+
+- name: "Execute app using pm2"
+  shell: |
+    cd ~/backend-app/dist
+    pm2 stop default
+    pm2 start main.js
+  register: execute_app
+
+- name: print message
+  debug:
+    msg: "{{ execute_app.stdout_lines }}"
